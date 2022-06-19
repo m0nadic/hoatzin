@@ -26,5 +26,5 @@ func Execute() {
 
 func init() {
 	rootCmd.PersistentFlags().StringVarP(&host, "host", "b", "0.0.0.0", "Address to bind to")
-	rootCmd.PersistentFlags().IntVarP(&port, "config", "p", 4321, "HTTP port to listen on")
+	rootCmd.PersistentFlags().IntVarP(&port, "port", "p", 4321, "HTTP port to listen on")
 }

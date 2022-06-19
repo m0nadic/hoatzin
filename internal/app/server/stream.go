@@ -16,25 +16,25 @@ var upgrader = websocket.Upgrader{
 	},
 }
 
-type StreamingServer struct {
+type streamingServer struct {
 	Host    string
 	Port    int
 	Command []string
 }
 
 func NewStreamingServer(host string, port int, cmd []string) WebsocketServer {
-	return &StreamingServer{
+	return &streamingServer{
 		Host:    host,
 		Port:    port,
 		Command: cmd,
 	}
 }
 
-func (ss *StreamingServer) Addr() string {
+func (ss *streamingServer) Addr() string {
 	return fmt.Sprintf("%s:%d", ss.Host, ss.Port)
 }
 
-func (ss *StreamingServer) Start() error {
+func (ss *streamingServer) Start() error {
 	log.Println("Starting websocket server:", ss.Addr())
 	server := http.Server{
 		Addr:    ss.Addr(),
@@ -44,7 +44,7 @@ func (ss *StreamingServer) Start() error {
 	return server.ListenAndServe()
 }
 
-func (ss *StreamingServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (ss *streamingServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	c, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Print("ERROR:", "[upgrade]", err)
