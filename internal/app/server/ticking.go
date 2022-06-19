@@ -16,15 +16,16 @@ type tickingTemplateServer struct {
 	Port            int
 	MessageTemplate string
 	Interval        int
-	MessageType     string
+	Count           int
 }
 
-func NewTickingTemplateServer(host string, port int, template string, interval int) WebsocketServer {
+func NewTickingTemplateServer(host string, port int, template string, interval int, count int) WebsocketServer {
 	return &tickingTemplateServer{
 		Host:            host,
 		Port:            port,
 		MessageTemplate: template,
 		Interval:        interval,
+		Count:           count,
 	}
 }
 
@@ -52,7 +53,8 @@ func (tts *tickingTemplateServer) ServeHTTP(w http.ResponseWriter, r *http.Reque
 
 	ticker := time.NewTicker(time.Duration(tts.Interval) * time.Millisecond)
 
-	for {
+	log.Println("sending total", tts.Count, "messages, 1 in every", tts.Interval, "milliseconds")
+	for i := 0; i < tts.Count; i++ {
 		select {
 		case _ = <-ticker.C:
 			writeTemplate(c, tts.MessageTemplate)
