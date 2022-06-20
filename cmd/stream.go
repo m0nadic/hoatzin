@@ -7,7 +7,6 @@ import (
 	"os"
 )
 
-// streamCmd represents the stream command
 var streamCmd = &cobra.Command{
 	Use:   "stream",
 	Short: "Streams the standard output.",

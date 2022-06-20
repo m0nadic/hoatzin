@@ -8,7 +8,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// tickCmd represents the tick command
 var (
 	message  string
 	interval int

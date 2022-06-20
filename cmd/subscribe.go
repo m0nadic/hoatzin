@@ -6,7 +6,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// subscribeCmd represents the subscribe command
 var subscribeCmd = &cobra.Command{
 	Use:   "subscribe",
 	Short: "Subscribe to a topic and stream messages",

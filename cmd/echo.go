@@ -8,7 +8,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// echoCmd represents the echo command
 var echoCmd = &cobra.Command{
 	Use:   "echo",
 	Short: "Echoes back the request",

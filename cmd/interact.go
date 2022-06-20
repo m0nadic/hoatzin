@@ -6,7 +6,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// interactCmd represents the interact command
 var interactCmd = &cobra.Command{
 	Use:   "interact",
 	Short: "Interact with websocket connection",
